@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Summoner's Journal</title>
+        <link rel="stylesheet" href="normalize.css">
+        <link href="https://fonts.googleapis.com/css?family=Archivo|Archivo+Narrow&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <nav class="main-nav">
+            <h1 class="main-header">Summoner's <br>Journal</h1>
+        </nav>
+        <div class="content">
+            <div class="header2">
+                <p>Check out your Summoner Stats</p>
+            </div>
+            <form class="search-form">
+                <label class="sum-label" for="sumName">Summoner Name</label>
+                <div class="row">
+                    <input type="text" name="sumName" id="sumName" class="sum-input">
+                    <div class="dropdown">
+                        <button class="dropbtn" value="NA">NA</button>
+                        <div class="dropdown-cont">
+                            <span value="NA">NA</span><br>
+                            <span value="EU">EU</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="search-btn">Search</button>
+                </div>
+            </form>
+        </div>
+        <footer class="footer">
+                <p>Summoner's Journal isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games
+                or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are
+                trademarks or registered trademarks of Riot Games, Inc. League of Legends &copy; Riot Games, Inc.</p>
+        </footer>
+    </body>
+    <script src="site.js"></script>
+</html>

@@ -1,0 +1,203 @@
+/* Basic Styles */
+*{
+    box-sizing: border-box;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    font-family: "Archivo", sans-serif;
+    height: 100vh;
+    background-image: url("assets/lux-bgblack.jpg");
+    background-repeat: no-repeat;
+    background-position: 30% 25%;
+    background-size: contain;
+    background-color: #1F1F1F;
+    background-attachment: fixed;
+    margin: 0 auto;
+}
+
+.main-nav{
+    background-color:transparent;
+
+}
+
+.main-header{
+    margin-top:0;
+    color: white;
+    font-weight: normal;
+    font-size: 2em;
+    letter-spacing: 1px;
+    border-style: solid;
+    border-color: white;
+    border-width: 0 0 1px 0;
+    padding-top: 20px;
+    padding-left: 3px;
+    height: 100%;
+    width: 250px;
+    background-color: rgba(17, 16, 16, 0.90); 
+
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    flex-wrap: nowrap;
+    margin: 0 auto;
+    width: 100%;
+    align-items: center;
+    /* margin-top: 200px; */
+}
+
+.header2{
+    display: flex;
+    flex-direction: column;
+    flex-flow: nowrap;
+    color:white;
+    background-color: rgba(17, 16, 16, 0.90);
+    letter-spacing: .05em;
+    font-size: 1.2em;
+    border: 1px solid white;
+    border-bottom: none;
+    padding: 2px 12px;
+    margin-top: 5em;
+}
+
+.search-form{
+    display: flex;
+    flex-flow: nowrap;
+    flex-direction: column;
+    /* margin-top: 30%; */
+    background-color: rgba(17, 16, 16, 0.95);
+    height: 180px;
+    width: 100%;
+    padding: 20px 20px;
+    border: 1px solid white;
+    border-left: none;
+    border-right: none;
+}
+
+.sum-label{
+    color:white;
+    font-size: 1.5em;
+    letter-spacing: .5px;
+    padding: 20px 0;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+.sum-input{
+    letter-spacing: .05em;
+    font-size: 1.5em;
+    color: white;
+    height: 50px;
+    width: 70%;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid white;
+    
+} 
+
+.dropbtn{
+    border: 1px solid white;  /*Removes border*/
+    height: 50px;
+    font-size: 1em;
+    letter-spacing: .05em;
+    padding: 15px 15px;
+    background-color: transparent;
+    color: white;
+}
+
+.dropdown-cont{
+    width: 100%;
+    height: 200px;
+    background-color: rgba(17, 16, 16, 0.95);
+    border: 1px solid white;
+    display: none; /*display block in js*/
+}
+.dropdown-cont span{
+    color:white;
+    display: inline-block; 
+    margin-bottom: 5px;
+    border: 1px solid white;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+
+
+
+.search-btn {
+    font-size: 1em;
+    letter-spacing: .05em;
+    padding: 6px 0;
+    Color: white;
+    background-color:transparent;
+    border: 1px solid white;
+    width: 30%;
+    height:50px;
+} 
+
+
+.footer{
+    flex-shrink: 0;
+    margin: 0 auto;
+    padding: 10px;
+    width: 100%;
+    font-family: "Helvetica Neue",
+    Helvetica,"Apple SD Gothic Neo",AppleGothic,Dotum,Arial,Tahoma;
+    line-height: 1.5;
+    font-size: 10px;
+    color:rgb(255, 255, 255);
+    border: 1px solid black;
+    background-color: #1F1F1F;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+
+}
+
+/* Media Queries */
+/* Mobile Lanscape*/
+@media only screen and (orientation:landscape) and (min-width: 400px){
+    .search-form{
+        /* margin-top: 5%; */
+    }
+}
+
+/* Desktop/Laptop*/
+@media only screen and (min-width: 1024px){
+    
+    .search-form{
+        /* margin-top: 11em; */
+        width:50%;
+        height: 30%;
+        border: 1px solid white;
+    }
+
+    .sum-input{
+        width: 70%;
+    }
+
+    .search-btn{
+        width: 30%;
+    }
+
+    .footer{
+        width:50%;
+        border: 1px solid black;
+        border-bottom: none;
+    }
+
+}
