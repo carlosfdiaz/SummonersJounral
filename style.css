@@ -14,7 +14,7 @@ body{
     height: 100vh;
     background-image: url("assets/lux-bgblack.jpg");
     background-repeat: no-repeat;
-    background-position: 30% 25%;
+    background-position: 35% 25%;
     background-size: contain;
     background-color: #1F1F1F;
     background-attachment: fixed;
@@ -40,8 +40,36 @@ body{
     height: 100%;
     width: 250px;
     background-color: rgba(17, 16, 16, 0.90); 
+    /* transition: color 0.3s ease; */
 
 }
+
+.main-header > a{
+    display: flex;
+}
+
+.main-header > a:link{
+    text-decoration: inherit;
+    color: inherit;
+    /* cursor: pointer; */
+}
+
+.main-header > a:visited{
+    text-decoration: inherit;
+    color: inherit;
+    /* cursor: pointer; */
+}
+
+/* .main-header:hover{
+    color:rgb(199, 250, 192);
+
+} */
+
+/* .box{
+    transition: background-color 0.3s ease; 
+    width: 85%;
+    height: 2.2em;
+} */
 
 .content{
     display: flex;
@@ -51,7 +79,7 @@ body{
     margin: 0 auto;
     width: 100%;
     align-items: center;
-    /* margin-top: 200px; */
+    margin-top: 5em;
 }
 
 .header2{
@@ -60,12 +88,18 @@ body{
     flex-flow: nowrap;
     color:white;
     background-color: rgba(17, 16, 16, 0.90);
-    letter-spacing: .05em;
-    font-size: 1.2em;
     border: 1px solid white;
     border-bottom: none;
-    padding: 2px 12px;
-    margin-top: 5em;
+  
+    /* margin-top: 5em; */
+}
+
+.header2 > span {
+    display: inline-block;
+    cursor: default;
+    letter-spacing: .05em;
+    font-size: 1.2em;
+    padding: 20px 12px;
 }
 
 .search-form{
@@ -113,7 +147,13 @@ body{
     letter-spacing: .05em;
     padding: 15px 15px;
     background-color: transparent;
+    transition: background-color 0.3s ease;
     color: white;
+}
+
+.dropbtn:hover{
+    background-color: whitesmoke;
+    color: black;
 }
 
 .dropdown-cont{
@@ -143,11 +183,17 @@ body{
     letter-spacing: .05em;
     padding: 6px 0;
     Color: white;
+    transition: background-color 0.3s ease;
     background-color:transparent;
     border: 1px solid white;
     width: 30%;
     height:50px;
 } 
+
+.search-btn:hover {
+    background-color: whitesmoke;
+    color: black;
+}
 
 
 .footer{
@@ -169,13 +215,30 @@ body{
 }
 
 /* Media Queries */
+/*Small screen height*/
+/* @media only screen and (max-height: 800px){
+    .header2{
+        height: auto;
+    }
+} */
+
 /* Mobile Lanscape*/
-@media only screen and (orientation:landscape) and (min-width: 400px){
+/* @media only screen and (orientation:landscape) and (max-width: 400px){
     .search-form{
-        /* margin-top: 5%; */
+         margin-top: 5%; 
+    }
+    
+    .header2{
+        margin-top: 1em;
+        height: 22%;
+    }
+} */
+/*iPad height*/
+@media only screen and (min-height: 1024px){
+    body{
+        background-position: 30% 10%;
     }
 }
-
 /* Desktop/Laptop*/
 @media only screen and (min-width: 1024px){
     
@@ -186,13 +249,13 @@ body{
         border: 1px solid white;
     }
 
-    .sum-input{
+    /* .sum-input{
         width: 70%;
     }
 
     .search-btn{
         width: 30%;
-    }
+    } */
 
     .footer{
         width:50%;
