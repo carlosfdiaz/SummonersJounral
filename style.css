@@ -21,56 +21,38 @@ body{
     margin: 0 auto;
 }
 
+/* NAV */
 .main-nav{
-    background-color:transparent;
-
+    display: flex;
+    background-color: rgba(17, 16, 16, 0.95); 
+    border-bottom: 1px solid white;
 }
 
-.main-header{
-    margin-top:0;
+.logo{
     color: white;
     font-weight: normal;
-    font-size: 2em;
+    font-size: 1.6em;
     letter-spacing: 1px;
-    border-style: solid;
-    border-color: white;
-    border-width: 0 0 1px 0;
-    padding-top: 20px;
-    padding-left: 3px;
-    height: 100%;
-    width: 250px;
-    background-color: rgba(17, 16, 16, 0.90); 
+    padding: 12px;
+    padding-left: 5px;
+    
     /* transition: color 0.3s ease; */
 
 }
 
-.main-header > a{
-    display: flex;
-}
-
-.main-header > a:link{
-    text-decoration: inherit;
-    color: inherit;
+a.logo:link{
+    text-decoration: none;
+    color: white;
     /* cursor: pointer; */
 }
 
-.main-header > a:visited{
-    text-decoration: inherit;
-    color: inherit;
+a.logo:visited{
+    text-decoration: none;
+    color: white;
     /* cursor: pointer; */
-}
+} 
 
-/* .main-header:hover{
-    color:rgb(199, 250, 192);
-
-} */
-
-/* .box{
-    transition: background-color 0.3s ease; 
-    width: 85%;
-    height: 2.2em;
-} */
-
+/* Main Content*/
 .content{
     display: flex;
     flex-direction: column;
@@ -79,22 +61,23 @@ body{
     margin: 0 auto;
     width: 100%;
     align-items: center;
-    margin-top: 5em;
+    margin-top: 12em;
 }
 
-.header2{
+/*Header for content/form box*/
+.header{
     display: flex;
     flex-direction: column;
     flex-flow: nowrap;
     color:white;
-    background-color: rgba(17, 16, 16, 0.90);
+    background-color: rgba(17, 16, 16, 0.95);
     border: 1px solid white;
     border-bottom: none;
   
     /* margin-top: 5em; */
 }
 
-.header2 > span {
+.header > span {
     display: inline-block;
     cursor: default;
     letter-spacing: .05em;
@@ -102,6 +85,7 @@ body{
     padding: 20px 12px;
 }
 
+/*Separate box from box header*/
 .search-form{
     display: flex;
     flex-flow: nowrap;
@@ -122,6 +106,7 @@ body{
     letter-spacing: .5px;
     padding: 20px 0;
 }
+/*Row for sum input and buttons*/
 .row{
     display: flex;
     flex-direction: row;
@@ -140,15 +125,22 @@ body{
     
 } 
 
+/*Region Button*/
 .dropbtn{
     border: 1px solid white;  /*Removes border*/
     height: 50px;
     font-size: 1em;
     letter-spacing: .05em;
-    padding: 15px 15px;
+    padding: 15px 13px 15px 15px;
     background-color: transparent;
     transition: background-color 0.3s ease;
     color: white;
+}
+
+.dropbtn:after{
+    content:"▼";
+    font-size: .6em;
+    padding-left: 2px;
 }
 
 .dropbtn:hover{
@@ -156,26 +148,56 @@ body{
     color: black;
 }
 
+.dropdown:hover .dropdown-cont{
+    visibility: visible;
+    opacity: 1;
+}
+
+/*Dropdown for region selection*/
 .dropdown-cont{
     width: 100%;
-    height: 200px;
+    height: 173px;
     background-color: rgba(17, 16, 16, 0.95);
     border: 1px solid white;
-    display: none; /*display block in js*/
+    visibility: hidden;
+    transition: visibility 0s, opacity 0.3s ease;
+    opacity: 0;
+    overflow: auto;
 }
+
 .dropdown-cont span{
     color:white;
     display: inline-block; 
-    margin-bottom: 5px;
     border: 1px solid white;
     border-top: none;
     border-left: none;
     border-right: none;
     width: 100%;
     text-align: center;
-    padding: 10px;
+    padding: 12px 8px;
+    cursor: default;
+    transition: background-color 0.3s ease;
+   
 }
 
+.dropdown-cont span:last-child{
+    border-bottom: none;
+}
+
+.dropdown-cont span:hover{
+    color: black;
+    background-color: whitesmoke;
+}
+
+/*Custom Scrollbar*/
+.scroll::-webkit-scrollbar{
+    width: 2px;
+    background-color: transparent;
+}
+
+.scroll::-webkit-scrollbar-thumb{
+    background-color:whitesmoke;
+}
 
 
 .search-btn {
@@ -188,7 +210,7 @@ body{
     border: 1px solid white;
     width: 30%;
     height:50px;
-} 
+}
 
 .search-btn:hover {
     background-color: whitesmoke;
@@ -198,9 +220,10 @@ body{
 
 .footer{
     flex-shrink: 0;
-    margin: 0 auto;
+    display: flex;
+    /* margin: 0 auto; */
+    justify-content: center;
     padding: 10px;
-    width: 100%;
     font-family: "Helvetica Neue",
     Helvetica,"Apple SD Gothic Neo",AppleGothic,Dotum,Arial,Tahoma;
     line-height: 1.5;
@@ -211,28 +234,12 @@ body{
     border-bottom: none;
     border-left: none;
     border-right: none;
-
 }
 
+.footer > p{
+    text-align: center;
+}
 /* Media Queries */
-/*Small screen height*/
-/* @media only screen and (max-height: 800px){
-    .header2{
-        height: auto;
-    }
-} */
-
-/* Mobile Lanscape*/
-/* @media only screen and (orientation:landscape) and (max-width: 400px){
-    .search-form{
-         margin-top: 5%; 
-    }
-    
-    .header2{
-        margin-top: 1em;
-        height: 22%;
-    }
-} */
 /*iPad height*/
 @media only screen and (min-height: 1024px){
     body{
@@ -241,11 +248,13 @@ body{
 }
 /* Desktop/Laptop*/
 @media only screen and (min-width: 1024px){
-    
+    body{
+        background-position-y: 50px;
+    }
     .search-form{
         /* margin-top: 11em; */
         width:50%;
-        height: 30%;
+        height: 225px;
         border: 1px solid white;
     }
 
@@ -257,10 +266,11 @@ body{
         width: 30%;
     } */
 
-    .footer{
-        width:50%;
-        border: 1px solid black;
-        border-bottom: none;
+    .footer > p{
+        width: 50%;
+        /* border: 1px solid black;
+        border-bottom: none; */
+        text-align: center;
     }
 
 }
