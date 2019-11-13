@@ -86,7 +86,7 @@ a.logo:visited{
 }
 
 /*Separate box from box header*/
-.search-form{
+.black-box{
     display: flex;
     flex-flow: nowrap;
     flex-direction: column;
@@ -129,6 +129,7 @@ a.logo:visited{
 .dropbtn{
     border: 1px solid white;  /*Removes border*/
     height: 50px;
+    min-width: 70px;
     font-size: 1em;
     letter-spacing: .05em;
     padding: 15px 13px 15px 15px;
@@ -148,15 +149,10 @@ a.logo:visited{
     color: black;
 }
 
-.dropdown:hover .dropdown-cont{
-    visibility: visible;
-    opacity: 1;
-}
-
 /*Dropdown for region selection*/
 .dropdown-cont{
     width: 100%;
-    height: 173px;
+    height: 0;
     background-color: rgba(17, 16, 16, 0.95);
     border: 1px solid white;
     visibility: hidden;
@@ -164,6 +160,13 @@ a.logo:visited{
     opacity: 0;
     overflow: auto;
 }
+
+.dropdown:hover .dropdown-cont, .dropdown:active .dropdown-cont{
+    height: 173px;
+    visibility: visible;
+    opacity: 1;
+}
+
 
 .dropdown-cont span{
     color:white;
@@ -177,7 +180,9 @@ a.logo:visited{
     padding: 12px 8px;
     cursor: default;
     transition: background-color 0.3s ease;
-   
+    -webkit-user-select: none; /* Safari 3.1+ */
+    -moz-user-select: none; /* Firefox 2+ */
+    -ms-user-select: none; /* IE 10+ */
 }
 
 .dropdown-cont span:last-child{
@@ -190,8 +195,12 @@ a.logo:visited{
 }
 
 /*Custom Scrollbar*/
+.scroll{
+    scrollbar-color: white transparent;
+    scrollbar-width: thin;
+}
 .scroll::-webkit-scrollbar{
-    width: 2px;
+    width: 3px;
     background-color: transparent;
 }
 
@@ -217,6 +226,14 @@ a.logo:visited{
     color: black;
 }
 
+/* .summoner-result{
+    transition: visibility 0s, opacity 0.3s ease;
+    opacity: 0;
+} */
+
+.summoner-name{
+    color:white;
+}
 
 .footer{
     flex-shrink: 0;
@@ -236,6 +253,7 @@ a.logo:visited{
     border-right: none;
 }
 
+
 .footer > p{
     text-align: center;
 }
@@ -251,7 +269,7 @@ a.logo:visited{
     body{
         background-position-y: 50px;
     }
-    .search-form{
+    .black-box{
         /* margin-top: 11em; */
         width:50%;
         height: 225px;

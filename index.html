@@ -16,28 +16,33 @@
             <div class="header">
                 <span>Check out your Summoner Stats</span>
             </div>
-            <form class="search-form">
+            <form class="black-box">
                 <label class="sum-label" for="sumName">Summoner Name</label>
                 <div class="row">
                     <input type="text" name="sumName" id="sumName" class="sum-input">
                     <div class="dropdown">
-                        <button type="button" class="dropbtn" value="NA">NA</button>
-                        <div class="dropdown-cont scroll">
-                            <span value="NA">NA</span><br>
-                            <span value="BR">BR</span><br>
-                            <span value="EUNE">EUNE</span><br>
-                            <span value="EUW">EUW</span><br>
-                            <span value="LAN">LAN</span><br>
-                            <span value="LAS">LAS</span><br>
-                            <span value="OCE">OCE</span><br>
-                            <span value="RU">RU</span><br>
-                            <span value="TR">TR</span><br>
-                            <span value="JP">JP</span>
+                        <button type="button" class="dropbtn" id="regionBtn" value="NA">NA</button>
+                        <div class="dropdown-cont scroll" id="dropdownCont">
+                            <span id="NA1">NA</span><br>
+                            <span id="BR1">BR</span><br>
+                            <span id="EUN1">EUNE</span><br>
+                            <span id="EUW1">EUW</span><br>
+                            <span id="LAN">LAN</span><br>
+                            <span id="LAS">LAS</span><br>
+                            <span id="OCE">OCE</span><br>
+                            <span id="RU">RU</span><br>
+                            <span id="TR1">TR</span><br>
+                            <span id="JP1">JP</span>
                         </div>
                     </div>
-                    <button type="submit" class="search-btn">Search</button>
+                    <button type="button" class="search-btn" id="searchBtn">Search</button>
                 </div>
             </form>
+            <div class="black-box summoner-result">
+                <div class="summoner-name" id="summoner-name-display">
+
+                </div>
+            </div>
         </div>
         <footer class="footer">
                 <p>Summoner's Journal isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games
