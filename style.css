@@ -100,6 +100,7 @@ a.logo:visited{
     border-right: none;
 }
 
+
 .sum-label{
     color:white;
     font-size: 1.5em;
@@ -231,8 +232,19 @@ a.logo:visited{
     opacity: 0;
 } */
 
-.summoner-name{
-    color:white;
+.ProfileIcon{
+    margin-top: -7px;
+}
+
+.ProfileIcon > img{
+    width: 150px;
+    height: 150px;
+}
+
+.ProfileName{
+    color: white;
+    font-size: 24px;
+    margin-left: 10px;
 }
 
 .footer{

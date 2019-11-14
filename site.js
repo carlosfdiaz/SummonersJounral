@@ -26,7 +26,7 @@ for(let i = 0; i<dropdownContChildren.length; i++){
 
 
 
-function getSummonerAsync(sumName) {
+function getSummonerAsync(sumName, region) {
     // fetch(`https://introvertido.me/api/sjproxy?summoner=${sumName}`, {
     //     method: "get"
     //     })
@@ -34,6 +34,9 @@ function getSummonerAsync(sumName) {
     // .then(data =>{
     //     console.log(data)
     // });
+    sumName = sumName.replace(/\s/g, "");
+    let regionTrimmed = region.replace(/\d/g, "").toLowerCase();
+
   
     fetch(`https://localhost:44332/api/sjproxy?summoner=${sumName}`, {
         method: "get"
@@ -43,7 +46,7 @@ function getSummonerAsync(sumName) {
         return response.json()
     })
     .then(json => {
-        displaySummonerData(json)
+        displaySummonerData(json, regionTrimmed)
     })
     .catch(error =>{
         console.log("Unable to retrieve summoner.")
@@ -51,14 +54,21 @@ function getSummonerAsync(sumName) {
     
 }
 
-function displaySummonerData(json){
-   document.getElementById("summoner-name-display").innerHTML = `<span>${json.name}</span>`;
+function displaySummonerData(json, regionTrimmed){
+   if(typeof json.name !== "undefined"){
+        document.getElementById("profileIcon").innerHTML = `<img src='http://avatar.leagueoflegends.com/${regionTrimmed}/${json.name.toLowerCase()}.png'>`;
+        document.getElementById("profileName").innerHTML = `<span>${json.name}</span>`;
+    }else{
+        console.log("sum not found");
+    }
+  
    //console.log(json);
 }
 
 
 document.getElementById("searchBtn").addEventListener('click', ()=>{
     let sumName = document.getElementById("sumName").value;
-    getSummonerAsync(sumName);
+    let region = document.getElementById("regionBtn").value;
+    getSummonerAsync(sumName, region);
 
 });
