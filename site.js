@@ -26,19 +26,12 @@ for(let i = 0; i<dropdownContChildren.length; i++){
 
 
 
-function getSummonerAsync(sumName, region) {
-    // fetch(`https://introvertido.me/api/sjproxy?summoner=${sumName}`, {
-    //     method: "get"
-    //     })
-    // .then(response => response.json())
-    // .then(data =>{
-    //     console.log(data)
-    // });
-    sumName = sumName.replace(/\s/g, "");
+function getSummonerNameAsync(summonerName, region) {
+    summonerName = summonerName.replace(/\s/g, "");
     let regionTrimmed = region.replace(/\d/g, "").toLowerCase();
-
+    let summonerDetails;
   
-    fetch(`https://localhost:44332/api/sjproxy?summoner=${sumName}`, {
+    fetch(`https://localhost:44332/api/sjproxy?summoner=${summonerName}`, {
         method: "get"
         })
     .then(response => {
@@ -46,18 +39,40 @@ function getSummonerAsync(sumName, region) {
         return response.json()
     })
     .then(json => {
-        displaySummonerData(json, regionTrimmed)
+        getSummonerData(json, regionTrimmed)
+        //displaySummonerData(json, regionTrimmed)
     })
     .catch(error =>{
         console.log("Unable to retrieve summoner.")
     });
-    
+
+   
 }
 
-function displaySummonerData(json, regionTrimmed){
+function getSummonerData(json, regionTrimmed){
+    fetch(`https://localhost:44332/api/sjproxy/getSummonerRank?summonerID=${json.id}`, {
+        method: "get"
+    })
+    .then(response => {
+        if(!response.ok){throw response}
+        return response.json()
+    })
+    .then(rankData => {
+        displaySummonerData(json, rankData, regionTrimmed)
+    })
+    .catch(error =>{
+        console.log("unable to retrieve")
+    });
+}
+
+function displaySummonerData(json, rankData, regionTrimmed){
    if(typeof json.name !== "undefined"){
         document.getElementById("profileIcon").innerHTML = `<img src='http://avatar.leagueoflegends.com/${regionTrimmed}/${json.name.toLowerCase()}.png'>`;
-        document.getElementById("profileName").innerHTML = `<span>${json.name}</span>`;
+        document.getElementById("profileDetails").innerHTML = 
+        `<p class="ProfileHeader">${json.name}</p>
+        <p class="ProfileElement">${json.summonerLevel}</p>
+        <p class=ProfileElement>${rankData[0].tier} ${rankData[0].rank}</p>`;
+       
     }else{
         console.log("sum not found");
     }
@@ -67,8 +82,8 @@ function displaySummonerData(json, regionTrimmed){
 
 
 document.getElementById("searchBtn").addEventListener('click', ()=>{
-    let sumName = document.getElementById("sumName").value;
+    let summonerName = document.getElementById("summonerName").value;
     let region = document.getElementById("regionBtn").value;
-    getSummonerAsync(sumName, region);
+    getSummonerNameAsync(summonerName, region);
 
 });

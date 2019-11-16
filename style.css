@@ -113,6 +113,14 @@ a.logo:visited{
     flex-direction: row;
 }
 
+.col{
+    display: flex;
+    flex-direction: column;
+    flex-flow: nowrap;
+    color: white;
+    width: 100%;
+}
+
 .sum-input{
     letter-spacing: .05em;
     font-size: 1.5em;
@@ -234,6 +242,7 @@ a.logo:visited{
 
 .ProfileIcon{
     margin-top: -7px;
+    width: 150px;
 }
 
 .ProfileIcon > img{
@@ -241,11 +250,20 @@ a.logo:visited{
     height: 150px;
 }
 
-.ProfileName{
-    color: white;
-    font-size: 24px;
+.ProfileHeader{
+    font-size: 1.5em;
+    width: auto;
+    margin: 0;
     margin-left: 10px;
 }
+
+.ProfileElement{
+    font-size: 1em;
+    width: auto;
+    margin: 0;
+    margin-left: 10px;
+}
+
 
 .footer{
     flex-shrink: 0;

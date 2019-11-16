@@ -17,9 +17,9 @@
                 <span>Check out your Summoner Stats</span>
             </div>
             <form class="black-box">
-                <label class="sum-label" for="sumName">Summoner Name</label>
+                <label class="sum-label" for="summonerName">Summoner Name</label>
                 <div class="row">
-                    <input type="text" name="sumName" id="sumName" class="sum-input">
+                    <input type="text" name="summonerName" id="summonerName" class="sum-input">
                     <div class="dropdown">
                         <button type="button" class="dropbtn" id="regionBtn" value="NA1">NA</button>
                         <div class="dropdown-cont scroll" id="dropdownCont">
@@ -39,9 +39,11 @@
                 </div>
             </form>
             <div class="black-box summoner-result">
-                <div class="row">
-                    <div class="ProfileIcon" id="profileIcon"></div>
-                    <div class="ProfileName" id="profileName"></div>
+                    <div class="row">
+                        <div class="col">
+                        <div class="ProfileIcon" id="profileIcon"></div>
+                        <div class="ProfileDetails" id="profileDetails"></div>
+                    </div>
                 </div>
             </div>
         </div>
