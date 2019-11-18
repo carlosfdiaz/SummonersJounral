@@ -176,6 +176,18 @@ a.logo:visited{
     opacity: 1;
 }
 
+.NotFound{
+    color:white;
+    display: none;
+    margin: 0 auto;
+    margin-top: 4em;
+}
+
+.NotFound > span{
+    font-size: 2em;
+}
+
+
 
 .dropdown-cont span{
     color:white;
@@ -235,10 +247,10 @@ a.logo:visited{
     color: black;
 }
 
-/* .summoner-result{
+.summoner-result{
     transition: visibility 0s, opacity 0.3s ease;
     opacity: 0;
-} */
+}
 
 .ProfileIcon{
     margin-top: -7px;
@@ -264,6 +276,15 @@ a.logo:visited{
     margin-left: 10px;
 }
 
+.RankEmblem{
+    margin: 0;
+    margin-left: 25px;
+    margin-top: -8px;
+}
+.RankEmblem > img{
+    width: 150px;
+    height: 150px;
+}
 
 .footer{
     flex-shrink: 0;
@@ -287,6 +308,33 @@ a.logo:visited{
 .footer > p{
     text-align: center;
 }
+
+/*Animations*/
+.lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+  }
+  .lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 /* Media Queries */
 /*iPad height*/
 @media only screen and (min-height: 1024px){

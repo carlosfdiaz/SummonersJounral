@@ -16,7 +16,7 @@
             <div class="header">
                 <span>Check out your Summoner Stats</span>
             </div>
-            <form class="black-box">
+            <form class="black-box" id="searchForm">
                 <label class="sum-label" for="summonerName">Summoner Name</label>
                 <div class="row">
                     <input type="text" name="summonerName" id="summonerName" class="sum-input">
@@ -38,11 +38,14 @@
                     <button type="button" class="search-btn" id="searchBtn">Search</button>
                 </div>
             </form>
-            <div class="black-box summoner-result">
+            <div class="black-box summoner-result" id="summoner-result">
                     <div class="row">
-                        <div class="col">
+                        <div class="lds-dual-ring" id="loader"></div>
+                        <div class="NotFound" id="notFound"><span>Summoner not found.</span></div>
+                    <div class="col" id="resultsCol">
                         <div class="ProfileIcon" id="profileIcon"></div>
                         <div class="ProfileDetails" id="profileDetails"></div>
+                        <div class="RankEmblem" id="rankEmblem"></div>
                     </div>
                 </div>
             </div>

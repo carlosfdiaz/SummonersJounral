@@ -1,5 +1,6 @@
 
 /*Hover event for region button dropdown*/
+var summonerBasicData;
 document.getElementById("regionBtn").addEventListener("mouseover",()=>{
 
     document.getElementById("dropdownCont").style.visibility = "visible";
@@ -31,7 +32,7 @@ function getSummonerNameAsync(summonerName, region) {
     let regionTrimmed = region.replace(/\d/g, "").toLowerCase();
     let summonerDetails;
   
-    fetch(`https://localhost:44332/api/sjproxy?summoner=${summonerName}`, {
+    fetch(`https://introvertido.me/api/sjproxy?summoner=${summonerName}`, {
         method: "get"
         })
     .then(response => {
@@ -39,7 +40,7 @@ function getSummonerNameAsync(summonerName, region) {
         return response.json()
     })
     .then(json => {
-        getSummonerData(json, regionTrimmed)
+        getSummonerRank(json, regionTrimmed)
         //displaySummonerData(json, regionTrimmed)
     })
     .catch(error =>{
@@ -49,8 +50,8 @@ function getSummonerNameAsync(summonerName, region) {
    
 }
 
-function getSummonerData(json, regionTrimmed){
-    fetch(`https://localhost:44332/api/sjproxy/getSummonerRank?summonerID=${json.id}`, {
+function getSummonerRank(json, regionTrimmed){
+    fetch(`https://introvertido.me/api/sjproxy/getSummonerRank?summonerID=${json.id}`, {
         method: "get"
     })
     .then(response => {
@@ -58,32 +59,69 @@ function getSummonerData(json, regionTrimmed){
         return response.json()
     })
     .then(rankData => {
-        displaySummonerData(json, rankData, regionTrimmed)
+        displaySummonerProfile(json, rankData, regionTrimmed)
     })
     .catch(error =>{
-        console.log("unable to retrieve")
+        let rankData = "Unranked";
+        displaySummonerProfile(json, rankData, regionTrimmed)
     });
 }
 
-function displaySummonerData(json, rankData, regionTrimmed){
-   if(typeof json.name !== "undefined"){
-        document.getElementById("profileIcon").innerHTML = `<img src='http://avatar.leagueoflegends.com/${regionTrimmed}/${json.name.toLowerCase()}.png'>`;
+function displaySummonerProfile(json, rankData, regionTrimmed){
+    let emblemRank;
+    let emblemStr;
+    document.getElementById("notFound").style.display = "none";
+    if(rankData !== "Unranked"){
+        emblemRank = rankData[0].tier.toLowerCase();
+        emblemStr = emblemRank.charAt(0).toUpperCase() + emblemRank.slice(1);
+    }
+
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("resultsCol").style.display = "flex";
+   if(typeof json.name !== "undefined" && rankData !== "Unranked"){
+        document.getElementById("profileIcon").innerHTML = `<img src='http://ddragon.leagueoflegends.com/cdn/9.22.1/img/profileicon/${json.profileIconId}.png'>`;
         document.getElementById("profileDetails").innerHTML = 
         `<p class="ProfileHeader">${json.name}</p>
         <p class="ProfileElement">${json.summonerLevel}</p>
-        <p class=ProfileElement>${rankData[0].tier} ${rankData[0].rank}</p>`;
-       
+        <p class=ProfileElement>${rankData[0].tier} ${rankData[0].rank}</p>
+        <p class="ProfileElement">Wins: ${rankData[0].wins}</p>
+        <p class="ProfileElement">Losses: ${rankData[0].losses}</p>`;
+        document.getElementById("rankEmblem").innerHTML = `<img src='assets/ranked-emblems/Emblem_${emblemStr}.png'>`;
+    }else if(typeof json.name !== "undefined" && rankData == "Unranked"){
+        document.getElementById("profileIcon").innerHTML = `<img src='http://ddragon.leagueoflegends.com/cdn/9.22.1/img/profileicon/${json.profileIconId}.png'>`;
+        document.getElementById("rankEmblem").innerHTML = "";
+        document.getElementById("profileDetails").innerHTML = 
+        `<p class="ProfileHeader">${json.name}</p>
+        <p class="ProfileElement">${json.summonerLevel}</p>
+        <p class="ProfileElement">Unraked</p>`;
     }else{
-        console.log("sum not found");
+        document.getElementById("resultsCol").style.display = "none";
+        document.getElementById("notFound").style.display = "block";
     }
-  
-   //console.log(json);
 }
 
 
 document.getElementById("searchBtn").addEventListener('click', ()=>{
+    SearchAction();
+});
+document.getElementById("searchForm").onsubmit = () => {event.preventDefault()};
+
+document.getElementById("summonerName").addEventListener("keyup",() =>{
+        if(event.keyCode == 13){
+            event.preventDefault(); 
+            SearchAction();
+        }
+        
+});
+
+function SearchAction (){
     let summonerName = document.getElementById("summonerName").value;
     let region = document.getElementById("regionBtn").value;
+    resultBox = document.getElementById("summoner-result");
+    document.getElementById("resultsCol").style.display = "none";
+    document.getElementById("notFound").style.display = "none";
+    document.getElementById("loader").style.display = "inline-block";
     getSummonerNameAsync(summonerName, region);
-
-});
+    resultBox.style.visibility = "visible";
+    resultBox.style.opacity = "1";
+}
